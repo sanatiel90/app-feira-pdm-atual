@@ -5,4 +5,9 @@
     <color name="colorAccent">#0091EA</color>
     <color name="white">#FFFFFF</color>
     <color name="colorBtSobre">#0288D1</color>
+    <color name="colorIsFavoriteBack">#D50000</color>
+    <color name="colorIsFavoriteIcon">#F48FB1</color>
+    <color name="colorIsNotFavoriteBack">#9CCC65</color>
+    <color name="colorIsNotFavoriteIcon">#B3E5FC</color>
+
 </resources>

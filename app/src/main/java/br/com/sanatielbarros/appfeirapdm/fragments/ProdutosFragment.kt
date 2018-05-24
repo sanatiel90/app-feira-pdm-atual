@@ -24,7 +24,7 @@ import org.jetbrains.anko.uiThread
 //import org.jetbrains.anko.
 
 
-class ProdutosFragment : Fragment() {
+open class ProdutosFragment : Fragment() {
 
     //var privada da Enum CategoriaProduto, vai receber umas das categorias listadas la; a categoria todas é pra indicar mostrar todos os produtos
     //independente da categoria
@@ -65,7 +65,7 @@ class ProdutosFragment : Fragment() {
     }
 
     //metodo que faz a requisicao ao web service e atualiza a lista de carros na tela
-    fun taskProdutos(){
+    open fun taskProdutos(){
         //verificar se existe conexao com a net
         if(!AndroidUtils.isNetworkAvaliable(context)){
             toast("Não há conexão com a internet")
@@ -85,7 +85,7 @@ class ProdutosFragment : Fragment() {
     }
 
     //evento de clique no produto da lista
-    fun onClickProduto(produto: Produto){
+   open fun onClickProduto(produto: Produto){
         activity.startActivity<ProdutoDetalheActivity>("produto" to produto)
     }
 

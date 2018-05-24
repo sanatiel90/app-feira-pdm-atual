@@ -1,6 +1,7 @@
 package br.com.sanatielbarros.appfeirapdm.domain
 
 import android.util.Log
+import br.com.sanatielbarros.appfeirapdm.domain.dao.DatabaseManager
 import br.com.sanatielbarros.appfeirapdm.extensions.fromJson
 import br.com.sanatielbarros.appfeirapdm.utils.HttpHelper
 
@@ -37,6 +38,25 @@ object ProdutoService {
             Log.d(TAG,"${produtos.size} produtos encontrados")
             return produtos
     }
+
+
+    fun delete(produto: Produto): Response{
+        //endpoint de deletar
+        val url = "$BASE_URL/products/${produto.id}"
+        //faz requisicao delete e recebe o json de resposta
+        val json = HttpHelper.delete(url)
+        //tranforma o json em um obj do tipo Response, q contem os dados da resposta (msg, status, etc) obtidas do servidor
+        val response = fromJson<Response>(json)
+        Log.d(TAG,"STATUS: "+response.status)
+
+        //se id da resposta nao estiver nulo, deu certo deletar, entao apaga tbm do bd interno sqlite
+        if(response.id != null){
+            val daoProduto = DatabaseManager.getProdutoDAO()
+            daoProduto.delete(produto)
+        }
+        return response
+    }
+
 
 
 }

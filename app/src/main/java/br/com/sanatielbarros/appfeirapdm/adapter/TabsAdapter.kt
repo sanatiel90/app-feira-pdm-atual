@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import br.com.sanatielbarros.appfeirapdm.fragments.FavoritosFragment
 import br.com.sanatielbarros.appfeirapdm.fragments.ProdutosFragment
 
 
@@ -33,7 +34,7 @@ class TabsAdapter(private val context: Context, fm: FragmentManager): FragmentPa
     override fun getItem(position: Int): Fragment {
         //caso for a tab 1, mostrar frag de favoritos, caso contrario mostrar frag prdutos
         if(position == 1){
-            //return FavoritosFragment
+            return FavoritosFragment()
         }
 
         val frag: Fragment = ProdutosFragment()

@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
+import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import br.com.sanatielbarros.appfeirapdm.R
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setupNavDrawer()
         setupViewPagerTabs()
         fab.setOnClickListener{
-            toast("Novo produto")
+            startActivity<FormProdutoActivity>()
         }
 
        /* if (savedInstanceState == null){
@@ -113,6 +114,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         tabLayout.setupWithViewPager(viewPager)
 
 
+        /*salvar indice da tab clicada, ainda por fazer
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageSelected(position: Int) {
+
+            }
+        })*/
 
     }
 

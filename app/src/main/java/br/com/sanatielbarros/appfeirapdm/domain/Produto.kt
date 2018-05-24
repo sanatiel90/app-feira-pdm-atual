@@ -1,5 +1,7 @@
 package br.com.sanatielbarros.appfeirapdm.domain
 
+import android.arch.persistence.room.Entity
+import android.arch.persistence.room.PrimaryKey
 import android.os.Parcel
 import android.os.Parcelable
 import java.util.*
@@ -7,7 +9,9 @@ import java.util.*
 /**
  * Created by Sanatiel on 05/05/2018.
  */
+@Entity(tableName = "products")
 class Produto() : Parcelable   {
+    @PrimaryKey(autoGenerate = true)
     var id: Long = 0
     var nome: String = ""
     var categoria: String = ""

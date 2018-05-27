@@ -4,6 +4,7 @@ import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import android.util.Log
 import okhttp3.Request
+import okhttp3.RequestBody
 import java.io.IOException
 
 /**
@@ -36,6 +37,25 @@ object HttpHelper {
         return getJson(request)
     }
 
+    fun store(url: String, json: String): String{
+        log("HttpHelper.post: $url")
+        //transformando o json com dados do produto num obj RequestBody a ser enviado na requisicao
+        val body = RequestBody.create(JSON, json)
+        //criando a requsicao  post
+        val request = Request.Builder().url(url).post(body).build()
+        //fazendo a requisicao e retornando json de resposta
+        return getJson(request)
+    }
+
+    fun update(url: String, json: String): String{
+        log("HttpHelper.put: $url")
+        val body = RequestBody.create(JSON, json)
+        val request = Request.Builder().url(url).addHeader("Accept","application/json")
+                      .addHeader("Content-Type","application/x-www-form-urlencoded").put(body).build()
+        return getJsonUpdate(request)
+    }
+
+
 
     //faz a requisicao e lê a resposta do servidor em formato json
     fun getJson(request: Request?): String{
@@ -52,6 +72,23 @@ object HttpHelper {
         throw IOException("Erro ao fazer requisição")
 
     }
+
+    fun getJsonUpdate(request: Request?): String{
+        //faz a req e retorna a resposta
+        val response = client.newCall(request).execute()
+        //pega o body da resposta
+        val responseBody = response.body()
+        if(responseBody != null){
+            log("HttpHelper.put: $responseBody")
+            //json com o corpo da resposta
+            val json = responseBody.string()
+            log("  << : $json")
+            return json
+        }
+        throw IOException("Erro ao fazer requisição")
+
+    }
+
 
 
     private fun log(s: String){

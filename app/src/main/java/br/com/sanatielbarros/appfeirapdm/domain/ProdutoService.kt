@@ -3,6 +3,7 @@ package br.com.sanatielbarros.appfeirapdm.domain
 import android.util.Log
 import br.com.sanatielbarros.appfeirapdm.domain.dao.DatabaseManager
 import br.com.sanatielbarros.appfeirapdm.extensions.fromJson
+import br.com.sanatielbarros.appfeirapdm.extensions.toJson
 import br.com.sanatielbarros.appfeirapdm.utils.HttpHelper
 
 /**
@@ -57,6 +58,21 @@ object ProdutoService {
         return response
     }
 
+    fun save(produto: Produto): Response{
+        val url = "$BASE_URL/products";
+        //informa o endpoint para salvar e o produto a ser salvo, em forma de json; recebe o json de resposta vinda do WS
+        val json = HttpHelper.store(url, produto.toJson())
+        //usando met fromJson q foi criado para converter o json de resposta em obj(nesse caso um obj da classe Response)
+        val response = fromJson<Response>(json)
+        return response
+    }
+
+    fun update(produto: Produto): Response{
+        val url = "$BASE_URL/products/${produto.id}"
+        val json = HttpHelper.update(url, produto.toJson())
+        val response = fromJson<Response>(json)
+        return response
+    }
 
 
 }

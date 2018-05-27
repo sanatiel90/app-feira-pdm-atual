@@ -17,6 +17,9 @@
     <string name="msg_sobre">Aplicativo desenvolvido por Sanatiel Barros, Alyson Brito e Samuel Porto</string>
     <string name="menu_editar">Editar</string>
     <string name="menu_deletar">Deletar</string>
+    <string name="msg_erro_form_nome">Informe o nome do produto</string>
+    <string name="msg_erro_form_local">Informe o local do produto</string>
+    <string name="msg_erro_form_preco">Informe o preço do produto</string>
 
 
 </resources>

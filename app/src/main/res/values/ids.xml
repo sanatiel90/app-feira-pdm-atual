@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="msg_erro_form_local" type="id">Informe o local do produto</item>
+</resources>

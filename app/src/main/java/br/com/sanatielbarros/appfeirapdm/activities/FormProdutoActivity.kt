@@ -39,7 +39,7 @@ class FormProdutoActivity : AppCompatActivity() {
         if(produto != null){
             inputNome.setText(produto.nome)
             inputLocal.setText(produto.local)
-            inputPreco.setText(produto.preco)
+            inputPreco.setText(produto.preco.toString())
             spinnerInputCategoria.setSelection(categorias.indexOf(produto.categoria))
         }
      }
@@ -76,7 +76,7 @@ class FormProdutoActivity : AppCompatActivity() {
             //copiando os valores do form para o obj que vai ser salvo
             prod.nome = inputNome.string
             prod.local = inputLocal.string
-            prod.preco = inputPreco.string
+            prod.preco = inputPreco.string.toFloat()
             prod.categoria = spinnerInputCategoria.selectedItem.toString()
             val response = ProdutoService.save(prod)
 
@@ -92,7 +92,7 @@ class FormProdutoActivity : AppCompatActivity() {
             val prod = produto
             prod.nome = inputNome.string
             prod.local = inputLocal.string
-            prod.preco = inputPreco.string
+            prod.preco = inputPreco.string.toFloat()
             prod.categoria = spinnerInputCategoria.selectedItem.toString()
 
             val response = ProdutoService.update(prod)

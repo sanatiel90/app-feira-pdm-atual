@@ -5,7 +5,7 @@
     <!--cor do preenchimento-->
     <solid android:color="@color/colorBtSobre" />
     <!--quantidade de radius, quanto maior mais arredondado-->
-    <corners android:radius="10dp"/>
+    <corners android:radius="50dp"/>
 
     <!--largura e cor da borda, caso deseje colocar
     <stroke

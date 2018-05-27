@@ -1,8 +1,10 @@
 package br.com.sanatielbarros.appfeirapdm.utils
 
 import android.content.Context
+import android.icu.text.NumberFormat
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import java.util.*
 
 /**
  * Created by Sanatiel on 07/05/2018.
@@ -24,6 +26,14 @@ object AndroidUtils{
             }
         }
         return false*/
+    }
+
+
+    fun formatMoney(valor: Float): String{
+        val local = Locale("pt","BR")
+        val formato = java.text.NumberFormat.getCurrencyInstance(local)
+        val valorFormatado = formato.format(valor)
+        return valorFormatado
     }
 
 

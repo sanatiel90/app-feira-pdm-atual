@@ -52,7 +52,7 @@ object HttpHelper {
         val body = RequestBody.create(JSON, json)
         val request = Request.Builder().url(url).addHeader("Accept","application/json")
                       .addHeader("Content-Type","application/x-www-form-urlencoded").put(body).build()
-        return getJsonUpdate(request)
+        return getJson(request)
     }
 
 
@@ -72,23 +72,6 @@ object HttpHelper {
         throw IOException("Erro ao fazer requisição")
 
     }
-
-    fun getJsonUpdate(request: Request?): String{
-        //faz a req e retorna a resposta
-        val response = client.newCall(request).execute()
-        //pega o body da resposta
-        val responseBody = response.body()
-        if(responseBody != null){
-            log("HttpHelper.put: $responseBody")
-            //json com o corpo da resposta
-            val json = responseBody.string()
-            log("  << : $json")
-            return json
-        }
-        throw IOException("Erro ao fazer requisição")
-
-    }
-
 
 
     private fun log(s: String){

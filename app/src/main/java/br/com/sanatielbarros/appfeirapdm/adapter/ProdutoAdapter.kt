@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.sanatielbarros.appfeirapdm.R
 import br.com.sanatielbarros.appfeirapdm.domain.Produto
+import br.com.sanatielbarros.appfeirapdm.utils.AndroidUtils.formatMoney
 import kotlinx.android.synthetic.main.adapter_produto.view.*
 
 /**
@@ -39,7 +40,7 @@ class ProdutoAdapter(val produtos: List<Produto>, val onClick: (Produto) -> Unit
         with(view){
             //atualiza dados do produto
             txtNomeProduto.text = produto.nome
-            txtPreco.text =  "Preço: "+produto.preco.toString()
+            txtPreco.text =  "Preço: "+formatMoney(produto.preco)         //produto.preco.toString()
             txtLocal.text = "Local: "+produto.local
             //add evento de click na linha
             setOnClickListener { onClick(produto) }

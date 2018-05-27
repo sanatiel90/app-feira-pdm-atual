@@ -15,7 +15,7 @@ class Produto() : Parcelable   {
     var id: Long = 0
     var nome: String = ""
     var categoria: String = ""
-    var preco: String = ""
+    var preco: Float = 0.0f
     var created_at: String = ""
     var local : String = ""
 
@@ -23,7 +23,7 @@ class Produto() : Parcelable   {
         id = parcel.readLong()
         nome = parcel.readString()
         categoria = parcel.readString()
-        preco = parcel.readString()
+        preco = parcel.readFloat()
         created_at = parcel.readString()
         local = parcel.readString()
     }
@@ -32,7 +32,7 @@ class Produto() : Parcelable   {
         parcel.writeLong(id)
         parcel.writeString(nome)
         parcel.writeString(categoria)
-        parcel.writeString(preco)
+        parcel.writeFloat(preco)
         parcel.writeString(created_at)
         parcel.writeString(local)
     }

@@ -10,6 +10,7 @@ import br.com.sanatielbarros.appfeirapdm.domain.Produto
 import br.com.sanatielbarros.appfeirapdm.domain.ProdutoService
 import br.com.sanatielbarros.appfeirapdm.extensions.setupToolbar
 import br.com.sanatielbarros.appfeirapdm.extensions.toast
+import br.com.sanatielbarros.appfeirapdm.utils.AndroidUtils.formatMoney
 import kotlinx.android.synthetic.main.activity_produto_detalhe.*
 import kotlinx.android.synthetic.main.activity_produto_detalhe_contents.*
 import org.jetbrains.anko.alert
@@ -38,7 +39,7 @@ class ProdutoDetalheActivity : BaseActivity() {
     }
 
     private fun initViews(){
-        txtPreco.text = "Preço: "+produto.preco
+        txtPreco.text = "Preço: "+formatMoney(produto.preco)
         txtLocal.text = "Local: ${produto.local}"
         txtData.text = "Data: ${produto.created_at}"
         txtCategoria.text = "Categoria: ${produto.categoria}"

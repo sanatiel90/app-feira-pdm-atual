@@ -71,6 +71,12 @@ object ProdutoService {
         val url = "$BASE_URL/products/${produto.id}"
         val json = HttpHelper.update(url, produto.toJson())
         val response = fromJson<Response>(json)
+
+        //se atualizou, modificar tbm no sqlite
+        if(response.id != null){
+            val daoProduto = DatabaseManager.getProdutoDAO()
+            daoProduto.update(produto.nome,produto.local,produto.categoria,produto.preco, produto.id)
+        }
         return response
     }
 

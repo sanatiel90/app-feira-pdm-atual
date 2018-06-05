@@ -2,21 +2,25 @@ package br.com.sanatielbarros.appfeirapdm.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import br.com.sanatielbarros.appfeirapdm.R
 import br.com.sanatielbarros.appfeirapdm.domain.Produto
 import br.com.sanatielbarros.appfeirapdm.domain.ProdutoService
-import br.com.sanatielbarros.appfeirapdm.domain.Response
 import br.com.sanatielbarros.appfeirapdm.extensions.isEmpty
 import br.com.sanatielbarros.appfeirapdm.extensions.setupToolbar
 import br.com.sanatielbarros.appfeirapdm.extensions.string
 import br.com.sanatielbarros.appfeirapdm.extensions.toast
+import br.com.sanatielbarros.appfeirapdm.utils.MoneyTextWatcher
 import kotlinx.android.synthetic.main.activity_form_produto.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
+import java.text.NumberFormat
+import java.util.*
 
 class FormProdutoActivity : AppCompatActivity() {
 
@@ -41,6 +45,7 @@ class FormProdutoActivity : AppCompatActivity() {
             inputLocal.setText(produto.local)
             inputPreco.setText(produto.preco.toString())
             spinnerInputCategoria.setSelection(categorias.indexOf(produto.categoria))
+
         }
      }
 
@@ -117,4 +122,14 @@ class FormProdutoActivity : AppCompatActivity() {
         }
     }
 
+
+
+
 }
+
+
+
+
+
+
+

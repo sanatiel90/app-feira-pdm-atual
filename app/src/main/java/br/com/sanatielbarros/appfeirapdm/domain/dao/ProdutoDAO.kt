@@ -1,9 +1,6 @@
 package br.com.sanatielbarros.appfeirapdm.domain.dao
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Delete
-import android.arch.persistence.room.Insert
-import android.arch.persistence.room.Query
+import android.arch.persistence.room.*
 import br.com.sanatielbarros.appfeirapdm.domain.Produto
 
 /**
@@ -24,5 +21,8 @@ interface ProdutoDAO {
 
     @Delete
     fun delete(produto: Produto)
+
+    @Query("UPDATE products SET nome = :arg0, local = :arg1, categoria = :arg2, preco = :arg3 WHERE id = :arg4")
+    fun update(nome: String, local: String, categoria: String, preco: Float, id: Long)
 
 }
